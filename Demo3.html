@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>matrix变换</title>
+	<style type="text/css">
+		body {
+			height: 100%;
+			margin: 0;
+			background-color: #333;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body>
+	<canvas id="canvas" width="600" height="500" style="background-color: yellow;"></canvas>
+</body>
+
+</html>
+<script>
+	var currentX = 0;
+	var currentY = 0;
+	var position;
+	var xd,yd;
+	var stepX,stepY;
+
+	var c = document.getElementById("canvas");
+	var cxt = c.getContext("2d");
+	drawing({x:currentX,y:currentY});
+	function drawing(po){
+		cxt.clearRect(0,0,600,500);
+		cxt.fillStyle = "steelblue";
+		cxt.strokeRect(po.x,po.y,50,50);
+		cxt.fillRect(po.x,po.y,50,50);
+		currentX = po.x;
+		currentY = po.y;
+	}
+
+	function getPositionOnC(c,x,y){
+		var box = c.getBoundingClientRect();
+		var obj = {
+			x: x - box.left,
+			y: y - box.top
+		};
+		return obj;
+	}
+
+	c.onmousedown = function(e){
+		position = getPositionOnC(c,e.offsetX,e.offsetY);
+		var distance = Math.sqrt(Math.pow((position.x - currentX),2)+Math.pow((position.y - currentY),2));
+		
+		distance = Math.floor(distance);
+		if ((position.x - currentX) > 0) {
+			xd = 1;
+		}else{
+			xd = -1;
+		}
+
+		if ((position.y - currentY) > 0) {
+			yd = 1;
+		}else{
+			yd = -1;
+		}
+		stepY = Math.abs((position.y - currentY - 25))*yd;
+		stepX = Math.abs((position.x - currentX) - 25)*xd;
+		
+		drawingNext();
+	}
+	
+	function drawingNext(){		
+		if (xd*(position.x - currentX) >= 0) {
+			console.log({x:(currentX+stepX),y:(currentY+stepY)});
+			drawing({x:(currentX+stepX),y:(currentY+stepY)});
+			setTimeout(function() {
+				drawingNext
+			}, 1000);
+		}else
+		{
+			return false;
+		}
+	}
+</script>
