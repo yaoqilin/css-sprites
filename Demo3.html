@@ -1,26 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>matrix变换</title>
-	<style type="text/css">
-		body {
-			height: 100%;
-			margin: 0;
-			background-color: #333;
-			overflow: hidden;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100%;
+            margin: 0;
+            background-color: #333;
+            overflow: hidden;
+        }
+    </style>
 </head>
-
 <body>
-	<canvas id="canvas" width="600" height="500" style="background-color: yellow;"></canvas>
+    <canvas id="canvas" width="600" height="600" style="background-color:blue"></canvas>
 </body>
-
 </html>
 <script>
-	var currentX = 0;
+    var currentX = 0;
 	var currentY = 0;
 	var position;
 	var xd,yd;
@@ -30,8 +29,8 @@
 	var cxt = c.getContext("2d");
 	drawing({x:currentX,y:currentY});
 	function drawing(po){
-		cxt.clearRect(0,0,600,500);
-		cxt.fillStyle = "steelblue";
+        cxt.clearRect(0,0,600,600);
+        cxt.fillStyle = "red";
 		cxt.strokeRect(po.x,po.y,50,50);
 		cxt.fillRect(po.x,po.y,50,50);
 		currentX = po.x;

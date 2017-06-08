@@ -1,26 +1,36 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>matrix变换</title>
-		<style type="text/css">
-			body{
-				height: 100%;
-				margin: 0;
-				background-color: #333;
-				overflow: hidden;
-			}
-			body>section{
-				width: 300px;
-				height: 300px;
-				background-color: blue;
-				transform: matrix(1,0,0,1,500,250) matrix(0.525,0.525,-0.525,0.525,0,0);
-			}
-		</style>
-	</head>
-	<body>
-		<section>
-			
-		</section>
-	</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100%;
+            margin: 0;
+            background-color: #333;
+            overflow: hidden;
+        }
+        body>section{
+            width: 300px;
+            height: 200px;
+            background-color: goldenrod;
+            transform: matrix(1,0,0,1,500,250) matrix(0.525,0.525,-0.525,0.525,0,0)
+            /*transform: matrix(a,b,c,d,e,f);*/
+            /*假设是(0, 0)，即x=0, y=0。
+            于是，变换后的x坐标就是ax+cy+e = 1*0+0*0+30 =30, 
+            y坐标就是bx+dy+f = 0*0+1*0+30 =30.*/
+            /*e水平偏移f竖直偏移  a缩放x轴d缩放y轴  bc是旋转*/
+            /*transform: matrix3d(sx, 0, 0, 0, 0, sy, 0, 0, 0, 0, sz, 0, 0, 0, 0, 1)*/
+        }
+    </style>
+</head>
+<body>
+    <!--matrix()和matrix3d()，前者是元素2D平面的移动变换(transform)
+    2D变换矩阵为3*3,3D变换则是4*4的矩阵。-->
+    <!--斜拉(skew)，缩放(scale)，旋转(rotate)以及位移(translate)-->
+    <!--transform-origin: 50px 70px;则，中心点位置有中间移到了距离左侧50像素，顶部70像素的地方-->
+    <section></section>
+</body>
 </html>
